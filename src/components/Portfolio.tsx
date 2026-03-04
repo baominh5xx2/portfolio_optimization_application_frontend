@@ -104,7 +104,7 @@ export function Portfolio() {
 
         {/* Stock List */}
         <div className="space-y-4">
-          {data?.stocks.map((stock) => {
+          {data?.stocks.sort((a, b) => b.weight - a.weight).map((stock) => {
             return (
               <div
                 key={stock.symbol}
@@ -115,6 +115,9 @@ export function Portfolio() {
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <span className="text-2xl font-bold text-white">{stock.symbol}</span>
+                      <span className="px-2 py-1 bg-blue-600 text-white text-sm font-semibold rounded">
+                        {stock.weight}%
+                      </span>
                     </div>
                     <p className="text-gray-400 text-sm mb-3">{stock.name}</p>
 
